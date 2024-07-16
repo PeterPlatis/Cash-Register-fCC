@@ -10,21 +10,25 @@ body {
     align-items: center;
     width: 100vw;
     height: 100vh;
+    font-family: Arial, Helvetica, sans-serif;
+    color: hsl(0, 0%, 95%);
 }
 
 #cash-register-container {
     position: fixed;
-    width: 940px;
+    width: 1040px;
     height: 1200px;
     display: grid;
     justify-items: center;
     grid-template-rows: 450px 85px 80px 220px 270px;
     grid-template-columns: 1fr;
+    /* filter: drop-shadow(0 -2mm 4mm rgb(160, 0, 210)); */
+    filter: drop-shadow(0 0 10px black);
 }
 
 #outer-screen {
     height: 450px;
-    width: 800px;
+    width: 1000px;
     grid-row: 1 / 2;
     grid-column: 1 / 2;
     display: grid;
@@ -37,7 +41,7 @@ body {
 
 #black-screen {
     background-color: #343838;
-    width: 750px;
+    width: 950px;
     height: 400px;
     border-radius: 40px;
     display: grid;
@@ -46,7 +50,7 @@ body {
 }
 #gray-screen {
     background-color: #4b5252;
-    width: 720px;
+    width: 920px;
     height: 370px;
     border-radius: 30px;
     display: grid;
@@ -55,12 +59,98 @@ body {
 }
 #inner-screen {
     background-color: #697373;
-    width: 720px;
+    width: 920px;
     height: 335px;
     border-bottom-left-radius: 750px 20px;
     border-bottom-right-radius: 750px 20px;
     border-top-left-radius: 750px 20px;
     border-top-right-radius: 750px 20px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: repeat(3, 1fr);
+    padding: 1rem 1rem;
+    justify-items: center;
+    align-items: start;
+    gap: 20px;
+}
+
+#total-div {
+    grid-area: 1 / 1 / 2 / 2;
+    width: fit-content;
+    font-size: 2.8rem;
+    margin-top: 1rem;
+}
+
+#input-div {
+    align-self: center;
+    justify-self: center;
+    width: 100%;
+    height: 100%;
+    display: grid;
+}
+
+#change-due {
+    grid-area: 1 / 2 / 4 / 3;
+    display: grid;
+}
+
+#cash-drawer {
+    width: 90%;
+    grid-area: 1 / 3 / 4 / 4;
+    display: grid;
+}
+
+#cash {
+    justify-self: center;
+    width: 80%;
+    height: 80%;
+    font-size: 2.04rem;
+    text-align: center;
+    padding: 10px;
+    color: hsl(0, 0%, 30%);
+}
+
+#purchase-btn {
+    align-self: flex-start;
+    width: 80%;
+    height: 80%;
+    font-size: 2rem;
+    font-weight: 600;
+    color: hsl(0, 0%, 95%);
+    background-color: hsl(120, 74%, 37%);
+    border-radius: 10px;
+    border: 3px outset rgb(24, 163, 24);
+}
+
+#purchase-btn:hover {
+    color: #fff;
+    background-color: hsl(120, 74%, 40%);
+}
+
+#purchase-btn:active {
+    background-color: hsl(120, 74%, 30%);
+    border: 3px inset hsl(120, 74%, 37%);
+}
+
+.div-title {
+    font-weight: bold;
+    font-size: 1.5rem;
+    height: 3.5rem;
+    margin: 1rem 0;
+    text-align: center;
+}
+
+.money {
+    width: 180px;
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+    text-wrap: nowrap;
+    line-height: 1.5rem;
+    justify-self: center;
+}
+
+.right {
+    justify-self: flex-end;
 }
 
 #connecting-stem {
