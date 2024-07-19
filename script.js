@@ -31,8 +31,10 @@ function displayCashInDrawer() {
 
 displayCashInDrawer();
 
+let borked = false;
+
 function calculateChange() {
-    let changeOwed = (parseFloat(customerCash.value) - price).toFixed(2);
+    let changeOwed = parseFloat(customerCash.value) - price;
     if (isNaN(parseFloat(customerCash.value))) {
         return;
     }
@@ -61,14 +63,11 @@ function calculateChange() {
     cid.reverse().forEach((el, idx) => {
         let i = cid.length - 1 - idx;
 
-        let howManyTimes = Math.floor(changeOwed / values[i]);
-        let howManyTimesItFits = Math.floor(el[1] / values[i]);
-        let diff =
-            howManyTimesItFits > howManyTimes
-                ? howManyTimes
-                : howManyTimesItFits;
+        let howManyTimes = Math.floor((changeOwed * 100) / (values[i] * 100));
+        let howManyTimesItFits = Math.floor((el[1] * 100) / (values[i] * 100));
+        let diff = Math.min(howManyTimes, howManyTimesItFits);
 
-        let changeAccumulator = (diff * values[i]);
+        let changeAccumulator = diff * values[i];
 
         if (diff >= 1) {
             changeArr[i][1] += changeAccumulator;
@@ -76,19 +75,29 @@ function calculateChange() {
             el[1] -= changeAccumulator;
             changeOwed = changeOwed.toFixed(2);
         }
+
+        cid.forEach((el) => {
+            el[1] = el[1].toFixed(2) * 1;
+        });
     });
+
     if (changeOwed > 0) {
         change.innerHTML = `<h2 class="error">Status: INSUFFICIENT_FUNDS</h2>`;
+        borked = true;
         return;
     }
     cid.reverse();
 
     changeArr = changeArr.filter((el) => el[1] > 0).reverse();
 
+    changeArr.forEach((el) => {
+        el[1] = el[1].toFixed(2) * 1;
+    });
+
     if (findTotal(cid) === 0) {
-        change.innerHTML = `<p class="div-title">Status: Closed</p>`;
+        change.innerHTML = `<p class="div-title">Status: CLOSED</p>`;
     } else {
-        change.innerHTML = `<p class="div-title">Status: Open</p>`;
+        change.innerHTML = `<p class="div-title">Status: OPEN</p>`;
     }
 
     changeArr.forEach((el) => {
@@ -99,7 +108,7 @@ function calculateChange() {
 }
 
 function findTotal(arr) {
-    return arr.reduce((acc, el) => acc += el[1],0);
+    return arr.reduce((acc, el) => (acc += el[1]), 0);
 }
 
 purchaseButton.addEventListener("click", calculateChange);
