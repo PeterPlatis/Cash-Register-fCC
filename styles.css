@@ -72,7 +72,6 @@ body {
     justify-items: center;
     align-items: start;
     /* gap: 20px; */
-    
 }
 
 #total-div {
@@ -135,23 +134,35 @@ body {
 
 .div-title {
     font-weight: bold;
-    font-size: 1.5rem;
+    justify-self: center;
+    width: 240px;
+    font-size: 1.7rem;
     height: 3.5rem;
-    margin: 1rem 0;
-    text-align: center;
+    margin: 1.2rem 0 0 0;
+    text-align: start;
 }
 
 .money {
-    width: 180px;
-    display: grid;
-    grid-template-columns: 3fr 1fr;
+    width: 230px;
+    text-indent: 15px;
     text-wrap: nowrap;
     line-height: 1.5rem;
     justify-self: center;
+    word-spacing: 0.5rem;
+    font-size: 1.2rem;
 }
 
-.right {
-    justify-self: flex-end;
+.error {
+    height: 100px;
+    /* text-align: center; */
+    margin-top: 1rem;
+    margin-left: 1rem;
+    justify-self: center;
+    align-self: center;
+    grid-area: 1 / 1 / -1 / -1;
+    font-size: 1.7rem;
+    width: fit-content;
+    line-height: 2.3rem;
 }
 
 #connecting-stem {
@@ -272,4 +283,22 @@ body {
     border: 10px solid #656e6e;
     border-radius: 50%;
     background-color: #8a9696;
+}
+
+@media only screen and (max-width: 1200px) {
+    #cash-register-container {
+        scale: 0.7;
+    }
+}
+
+@media only screen and (max-width: 800px) {
+    #cash-register-container {
+        scale: 0.5;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    #cash-register-container {
+        scale: 0.4;
+    }
 }
