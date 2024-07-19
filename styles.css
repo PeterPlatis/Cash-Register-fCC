@@ -12,6 +12,7 @@ body {
     height: 100vh;
     font-family: Arial, Helvetica, sans-serif;
     color: hsl(0, 0%, 95%);
+    background: linear-gradient(-45deg, #d1b6ad, #99b2e0, #d6d29d, #aadfd2);
 }
 
 #cash-register-container {
@@ -22,7 +23,6 @@ body {
     justify-items: center;
     grid-template-rows: 450px 85px 80px 220px 270px;
     grid-template-columns: 1fr;
-    /* filter: drop-shadow(0 -2mm 4mm rgb(160, 0, 210)); */
     filter: drop-shadow(0 0 10px black);
 }
 
@@ -71,7 +71,6 @@ body {
     padding: 1rem 1rem;
     justify-items: center;
     align-items: start;
-    /* gap: 20px; */
 }
 
 #total-div {
@@ -154,7 +153,6 @@ body {
 
 .error {
     height: 100px;
-    /* text-align: center; */
     margin-top: 1rem;
     margin-left: 1rem;
     justify-self: center;
